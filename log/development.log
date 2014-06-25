@@ -1,0 +1,39 @@
+
+
+Started GET "/users/auth/google_oauth2" for 127.0.0.1 at 2014-06-25 10:46:05 +0530
+
+
+Started GET "/users/auth/google_oauth2/callback?state=2bed1b352faec61c45d81a1e492b2b0a20c4f04add64f4de&code=4/p6Qvpv0Jg5csQ0S9cHrg4MX2Ri0R.Yk5ujeWOiWsbdJfo-QBMszuUh-uijQI" for 127.0.0.1 at 2014-06-25 10:46:14 +0530
+Processing by OmniauthCallbacksController#google_oauth2 as HTML
+  Parameters: {"state"=>"2bed1b352faec61c45d81a1e492b2b0a20c4f04add64f4de", "code"=>"4/p6Qvpv0Jg5csQ0S9cHrg4MX2Ri0R.Yk5ujeWOiWsbdJfo-QBMszuUh-uijQI"}
+  MOPED: 127.0.0.1:27017 COMMAND      database=admin command={:ismaster=>1} runtime: 1.2544ms
+  MOPED: 127.0.0.1:27017 QUERY        database=screamout_development collection=users selector={"$query"=>{"email"=>"siddharth@joshsoftware.com"}, "$orderby"=>{:_id=>1}} flags=[] limit=-1 skip=0 batch_size=nil fields=nil runtime: 12.3749ms
+Redirected to http://localhost:3000/
+Completed 302 Found in 19ms
+
+
+Started GET "/" for 127.0.0.1 at 2014-06-25 10:46:16 +0530
+Processing by UsersController#index as HTML
+  Rendered users/index.html.erb within layouts/application (15.9ms)
+Completed 200 OK in 699ms (Views: 698.2ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-06-25 10:46:17 +0530
+
+
+Started GET "/assets/contents.css?body=1" for 127.0.0.1 at 2014-06-25 10:46:17 +0530
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-06-25 10:46:17 +0530
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-06-25 10:46:17 +0530
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-06-25 10:46:17 +0530
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-06-25 10:46:17 +0530
+
+
+Started GET "/assets/contents.js?body=1" for 127.0.0.1 at 2014-06-25 10:46:17 +0530
