@@ -23,7 +23,8 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0',          group: :doc
-
+gem "less-rails" 
+gem "twitter-bootstrap-rails"
 # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
 gem 'spring',        group: :development
 
@@ -48,7 +49,7 @@ group :development, :test do  #overrite existing..generate spec directory,,inclu
 		gem 'factory_girl_rails'
 		gem 'faker'
 		gem 'database_cleaner'
-		gem 'simplecov'
+		gem 'simplecov', '~> 0.7.1'
 		gem 'guard-rspec', require: false		
 end
 gem 'mongoid-rspec'		#tests beginning with 'should'
