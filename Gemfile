@@ -59,3 +59,6 @@ gem 'mongoid_taggable'
 gem 'mongoid_rateable', :git => 'git://github.com/PerfectMemory/mongoid_rateable.git'
 gem "bson"
 gem 'jquery-raty-rails', github: 'bmc/jquery-raty-rails' # Bleeding edge
+gem 'sidekiq'
+gem 'redis-rails'
+gem 'redis-namespace'

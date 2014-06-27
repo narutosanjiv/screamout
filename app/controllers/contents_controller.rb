@@ -11,18 +11,27 @@ class ContentsController < ApplicationController
 
 	
 	def show
+		@content = Content.find(params[:id])
 	end
+
 	def new
 		@content = Content.new
+		@con = Content.new
 	end
+
 	def create
-		@content = Content.new(content_params_input)
-		if @content.save
-			redirect_to contents_path
-		else
-			render action: 'new'
-		end
+	    @content = Content.new(content_params)
+	    @content.image_file_name = @content.title
+	    
+	      ImageWorker.perform_async(@content.id.to_s)  
+	    
+	    if @content.save
+	      redirect_to contents_path
+	    else
+	      render action: 'new'
+	    end
 	end
+
 	def edit
 		@content = Content.find(params[:id])
 		#@con = tags_to_hash(@content.tags.split(","))
@@ -30,8 +39,16 @@ class ContentsController < ApplicationController
 		@con = @content.tags.split(",")
 		@con = tags_to_hash(@con)
 	end
-	def delete
+
+	def destroy
+		@content = Content.find(params[:id])
+		if @content.destroy
+			redirect_to contents_path
+		else
+			render action: 'new'
+		end
 	end
+	
 	def update
 		@content = Content.find(params[:id])
 		@con = @content.tags.split(",")
@@ -42,6 +59,7 @@ class ContentsController < ApplicationController
 			render action: 'edit'
 		end
 	end
+	
 	private
 	def content_params_input
 		params.require(:content).permit(:url, :image_file_name, :tags, :rates, :user_id)
