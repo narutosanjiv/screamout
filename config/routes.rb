@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   resources :contents do
-    get :autocomplete_tag_name, :on => :collection
+    collection do
+      get 'tags'
+    end
   end
   devise_for :users, controllers: { omniauth_callbacks: "omniauth_callbacks" }
   root 'contents#index'

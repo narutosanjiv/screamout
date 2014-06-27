@@ -13,15 +13,14 @@
 //= require jquery
 //= require jquery.tokeninput
 //= require twitter/bootstrap
-// = require typeahead.bundle
 //= require turbolinks
 //= require_tree .
 
 ready = function(){
-  $("#content_tags").tokenInput("/contents.json", {
+  $("#content_tags").tokenInput("/contents/tags.json", {
     crossDomain: false,
     preventDuplicates: true,
-    allowCustomEntry: true,
+    allowFreeTagging: true,
     prePopulate: $("#content_tags").data("pre"),
     theme: "facebook"
   });

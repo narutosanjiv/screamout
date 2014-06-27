@@ -28,14 +28,6 @@ describe OmniauthCallbacksController, "handle google_oauth2 authentication callb
 		end
 	end
 end
-describe "top page" do
-	it "can handle authentication error" do
-		#OmniAuth.config.mock_auth[:google_oauth2] = :invalid_credentials
-		visit '/users/auth/google_oauth2/callback'
-		click_link "Sign IN"
-		page.should have_content('Sign in with Google Oauth2')
-	end
-end
 def stub_env_for_omniauth
 		request.env["devise.mapping"] = Devise.mappings[:user]
 		request.env["omniauth.auth"] = OmniAuth.config.mock_auth[:google_oauth2] 
