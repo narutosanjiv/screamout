@@ -1,15 +1,10 @@
 class ContentsController < ApplicationController
+
 	def index
 		@contents = Content.all
-		@cons = Content.tags
-		respond_to do |format|
-			format.html
-
-			format.json { render json: tags_to_hash(@cons)}
-		end
+		
 	end
 
-	
 	def show
 		@content = Content.find(params[:id])
 	end
@@ -17,6 +12,7 @@ class ContentsController < ApplicationController
 	def new
 		@content = Content.new
 		@con = Content.new
+		@con = []
 	end
 
 	def create
@@ -34,8 +30,6 @@ class ContentsController < ApplicationController
 
 	def edit
 		@content = Content.find(params[:id])
-		#@con = tags_to_hash(@content.tags.split(","))
-		
 		@con = @content.tags.split(",")
 		@con = tags_to_hash(@con)
 	end
@@ -49,6 +43,7 @@ class ContentsController < ApplicationController
 		end
 	end
 	
+
 	def update
 		@content = Content.find(params[:id])
 		@con = @content.tags.split(",")
@@ -57,6 +52,14 @@ class ContentsController < ApplicationController
 			redirect_to contents_path
 		else
 			render action: 'edit'
+		end
+	end
+
+	def tags
+		@cons = Content.tags
+		respond_to do |format|
+			format.html
+			format.json { render json: tags_to_hash(@cons)}
 		end
 	end
 	
