@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  resources :contents
+  resources :contents do
+    get :autocomplete_tag_name, :on => :collection
+  end
   devise_for :users, controllers: { omniauth_callbacks: "omniauth_callbacks" }
   root 'contents#index'
   # The priority is based upon order of creation: first created -> highest priority.

@@ -19,4 +19,4 @@
   /config/initializers/imgkit.rb
  
   /config/mongoid.yml
-  /~
+  /*.*

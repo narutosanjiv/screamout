@@ -1,6 +1,5 @@
 source 'https://rubygems.org'
 
-
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.1'
 gem 'mongoid', github:'mongoid/mongoid'
@@ -15,8 +14,8 @@ gem 'coffee-rails', '~> 4.0.0'
 gem 'devise'
 gem 'omniauth-google-oauth2'
 gem 'omniauth'
+gem 'simple_form'
 # Use jquery as the JavaScript library
-gem 'jquery-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
@@ -25,10 +24,13 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0',          group: :doc
 gem "less-rails" 
 gem "twitter-bootstrap-rails"
+gem 'twitter-typeahead-rails'
 # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
 gem 'spring',        group: :development
-
+gem 'jquery-ui-rails'
 gem 'imgkit'
+gem "jquery-rails"
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

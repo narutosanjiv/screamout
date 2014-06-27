@@ -11,7 +11,21 @@
 // about supported directives.
 //
 //= require jquery
-//= require jquery_ujs
+//= require jquery.tokeninput
 //= require twitter/bootstrap
+// = require typeahead.bundle
 //= require turbolinks
 //= require_tree .
+
+ready = function(){
+  $("#content_tags").tokenInput("/contents.json", {
+    crossDomain: false,
+    preventDuplicates: true,
+    allowCustomEntry: true,
+    prePopulate: $("#content_tags").data("pre"),
+    theme: "facebook"
+  });
+};
+
+$(document).ready(ready);
+$(document).on('page:load', ready)

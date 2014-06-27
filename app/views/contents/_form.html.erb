@@ -1,35 +1,25 @@
-<%= form_for @content, :html => { :class => 'form-horizontal' } do |f| %>
+<%= simple_form_for @content, :html => { :class => 'form-horizontal' } do |f| %>
   <div class="control-group">
-    <%= f.label :tags_array, :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_field :tags, :class => 'text_field' %>
+      <%= f.input :url, :class => 'input' %>
     </div>
   </div>
   <div class="control-group">
-    <%= f.label :url, :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_field :url, :class => 'text_field' %>
+      <%= f.input :image_file_name, :class => 'input' %>
     </div>
   </div>
   <div class="control-group">
-    <%= f.label :image_file_name, :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_field :image_file_name, :class => 'text_field' %>
+      <%= f.input :rates, :class => 'input' %>
     </div>
   </div>
   <div class="control-group">
-    <%= f.label :rates, :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_field :rates, :class => 'text_field' %>
+      <%= f.input :user_id, :class => 'input' %>
     </div>
+      <%= f.input :tags, :input_html => {"data-pre" => @con.map.to_json }%>
   </div>
-  <div class="control-group">
-    <%= f.label :user_id, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :user_id, :class => 'text_field' %>
-    </div>
-  </div>
-
   <div class="form-actions">
     <%= f.submit nil, :class => 'btn btn-primary' %>
     <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
