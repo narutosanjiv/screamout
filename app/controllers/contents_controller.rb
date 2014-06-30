@@ -1,7 +1,7 @@
 class ContentsController < ApplicationController
 
 	def index
-		@contents = Content.all
+		@contents = Content.all.desc(:created_at)
 		
 	end
 
@@ -16,7 +16,7 @@ class ContentsController < ApplicationController
 	end
 
 	def create
-	    @content = Content.new(content_params)
+	    @content = Content.new(content_params_input)
 	    @content.image_file_name = @content.title
 	    
 	      ImageWorker.perform_async(@content.id.to_s)  
@@ -65,7 +65,7 @@ class ContentsController < ApplicationController
 	
 	private
 	def content_params_input
-		params.require(:content).permit(:url, :image_file_name, :tags, :rates, :user_id)
+		params.require(:content).permit(:url, :title, :tags, :rates, :user_id)
 	end
 	def tags_to_hash(cons)
 		cons.map do |con|

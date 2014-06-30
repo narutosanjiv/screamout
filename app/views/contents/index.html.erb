@@ -11,15 +11,13 @@
   <tbody>
     <% @contents.each do |content| %>
       <tr>
-        <td><%= link_to content.id, content_path(content) %></td>
-        <td><%= content.tags %></td>
         <td><%= content.url %></td>
+        <td><%= content.tags %></td>
         <td><%= content.image_file_name %></td>
         <td><%= content.rates %></td>
         <td><%= content.rating %></td>
         <td><%= content.rating_previous %></td>
         <td><%= content.rating_delta %></td>
-        <td><%= content.user_id %></td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
                       edit_content_path(content), :class => 'btn btn-mini' %>
