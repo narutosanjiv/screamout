@@ -3,24 +3,41 @@
   <h1><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
 </div>
 
-<dl class="dl-horizontal">
-  <dt><strong><%= model_class.human_attribute_name(:tags_array) %>:</strong></dt>
-  <dd><%= @content.tags_array %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:url) %>:</strong></dt>
-  <dd><%= @content.url %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:image_file_name) %>:</strong></dt>
-  <dd><%= @content.image_file_name %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:rates) %>:</strong></dt>
-  <dd><%= @content.rates %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:rating) %>:</strong></dt>
-  <dd><%= @content.rating %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:rating_previous) %>:</strong></dt>
-  <dd><%= @content.rating_previous %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:rating_delta) %>:</strong></dt>
-  <dd><%= @content.rating_delta %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:user_id) %>:</strong></dt>
-  <dd><%= @content.user_id %></dd>
-</dl>
+<div class="span3 well">
+
+</div>
+
+
+<table class="table">
+  <tr>
+    <td><strong><%= model_class.human_attribute_name(:tags_array) %>:</strong></td>
+    <td><%= @content.tags_array %></td>
+  </tr>
+  <tr>
+    <td><strong><%= model_class.human_attribute_name(:url) %>:</strong></td>
+    <td><%= @content.url %></td>
+  </tr>
+  <tr>
+  <td><strong><%= model_class.human_attribute_name(:image_file_name) %>:</strong></td>
+  <td><%= @content.image_file_name %></td>
+  </tr>
+  <tr>
+  <td><strong><%= model_class.human_attribute_name(:rates) %>:</strong></td>
+  <td><%= @content.rates %></td>
+  </tr>
+  <tr>
+  <td><strong><%= model_class.human_attribute_name(:rating) %>:</strong></td>
+  <td><%= @content.rating %></td>
+  </tr>
+  <tr>
+  <td><strong><%= model_class.human_attribute_name(:user_id) %>:</strong></td>
+  <td><%= @content.user_id %></td>
+  </tr>
+  <tr>
+  <%=  image_tag(@content.photo.url(:small)) %>
+
+</tr>
+</table>
 
 <div class="form-actions">
   <%= link_to t('.back', :default => t("helpers.links.back")),

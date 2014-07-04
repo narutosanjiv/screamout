@@ -1,0 +1,18 @@
+ul.buttons_custom
+{
+	list-style-type: none;	
+}
+
+ul.buttons_custom li
+{	
+	opacity: 0.2;
+	display: inline;
+    float: left;	
+    padding-right: 20px;
+    padding-top: 10px;
+}
+
+ul.buttons_custom li:hover
+{
+	opacity: 0.8;
+}

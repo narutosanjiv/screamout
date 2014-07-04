@@ -1,4 +1,4 @@
-/*
+	/*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.
  *
@@ -13,3 +13,29 @@
  *= require_tree .
  *= require_self
  */
+
+.simple_form input
+{	
+	width: 230px;
+	border: 1px solid #8496ba;
+	overflow: hidden; 
+    cursor: text;
+    font-size: 12px;
+    font-family: Verdana;
+    min-height: 1px;
+    z-index: 999;
+    background-color: #fff;
+    list-style-type: none;
+    clear: left;
+     border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+}
+
+.simple_form input[type='submit']
+{
+	width: 140px;
+	height: 30px;
+
+}
+

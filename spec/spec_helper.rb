@@ -5,6 +5,10 @@ require 'rspec/rails'
 require 'rspec/autorun'
 require 'rails/mongoid'
 require 'database_cleaner'
+require 'paperclip/matchers'
+require 'sidekiq/testing'
+Sidekiq::Testing.fake!
+
 
 # Requires supporting ruby files with custom matchers and macros, etc,
 # in spec/support/ and its subdirectories.
