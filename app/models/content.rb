@@ -7,7 +7,7 @@
 
   IMAGE_PATH = "#{Rails.root}/public/snapshots/"
   #IMAGE_WIDTH = 100
-  IMAGE_HEIGHT = 400
+  IMAGE_HEIGHT = 600
   
   field :title, type: String
   field :url, type: String
@@ -25,5 +25,22 @@
   def image_file_name=(title)
     self[:image_file_name]= title.gsub(" ","_") +"_"+ Time.now.to_i.to_s + ".jpg"
   end
-  
+
+  def name
+    self.title
+  end
+
+  def tag_map
+    tags.split(",").collect{|t| {id: t, name: t}}
+  end  
+
+  def as_json(options ={})
+    options = {only: [:_id, :url, :tags_array], methods: [:id, :photo_url]}
+    super
+  end
+
+  def photo_url
+    self.photo.url
+  end
+
 end

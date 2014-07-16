@@ -46,6 +46,7 @@
 
     tokenFormatter: function(item) {
       var string = item[this.propertyToSearch];
+
       return "<li><p>" + (this.enableHTML ? string : _escapeHTML(string)) + "</p></li>";
     },
 

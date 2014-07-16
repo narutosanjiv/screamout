@@ -1,0 +1,29 @@
+- model_class = Content
+.page-header
+  %h1= t '.title', :default => "Screamout"
+- if flash[:notice]
+  .notice= flash[:notice]
+= link_to t('.new', :default => t("helpers.links.new")), new_content_path, :class => 'btn btn-primary'
+= simple_form_for @con, :html => { :class => 'form-search' } do |f|
+  .control-group
+    .controls
+      = f.input :tags ,:type=> 'search', :class => 'input-medium search-query',:input_html => {"data-pre"=> @c.to_a.map.to_json }
+      = link_to "Search",contents_path, :class => 'btn'
+
+%p#target
+#content_list
+%script#template{:type => "x-tmpl-mustache"}
+  .span2.well
+    %a{target:"blank" ,href:"{{url}}" }
+      %img{src: "{{photo_url}}"}
+    %input{type: 'hidden', value: "{{tags}}"}
+    %ul.buttons_custom
+      %li     
+        %a{href:"/contents/{{_id}}/edit"}
+          %i.icon-pencil
+      %li
+        %a{href:"/contents/{{_id}}",data:{method:"delete" ,confirm:"Are you sure?" }}
+          %i.icon-trash
+
+:javascript
+  conc = #{@contents.to_json}

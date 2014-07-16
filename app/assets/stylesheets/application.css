@@ -15,10 +15,10 @@
  */
 
 .simple_form input
-{	
-	width: 230px;
-	border: 1px solid #8496ba;
-	overflow: hidden; 
+{   
+    width: 230px;
+    border: 1px solid #8496ba;
+    overflow: hidden; 
     cursor: text;
     font-size: 12px;
     font-family: Verdana;
@@ -34,8 +34,8 @@
 
 .simple_form input[type='submit']
 {
-	width: 140px;
-	height: 30px;
-
+    width: 140px;
+    height: 30px;
+    cursor: pointer;
 }
 

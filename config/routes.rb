@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :contents do
     collection do
       get 'tags'
+      get 'content_ids'
     end
   end
   devise_for :users, controllers: { omniauth_callbacks: "omniauth_callbacks" }

@@ -1,0 +1,20 @@
+= simple_form_for @content, :html => { :class => 'form-horizontal' } do |f|
+  .control-group
+    .controls
+      = f.input :url, :class => 'input'
+  .control-group
+    .controls
+      = f.input :title, :class => 'input'
+  .control-group
+    .controls
+      = f.input :rates, :class => 'input'
+  .control-group
+    .controls
+      = f.input :user_id, :class => 'input'
+  .control-group
+    .controls
+      = f.input :tags, :input_html => {"data-pre" => @content.tag_map.to_json, :id => "contentTags"}
+  .form-actions
+    = f.submit nil, :class => 'btn btn-primary'
+    = link_to t('.cancel', :default => t("helpers.links.cancel")), |
+      contents_path, :class => 'btn'                               |
