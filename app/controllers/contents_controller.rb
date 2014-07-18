@@ -89,6 +89,7 @@ class ContentsController < ApplicationController
 			{id: con, name: con}
 		end   
 	end
+#not required************************************
 
 	def content_to_hash(cons)
 			cons.map do |cons|

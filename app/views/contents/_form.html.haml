@@ -1,20 +1,11 @@
-= simple_form_for @content, :html => { :class => 'form-horizontal' } do |f|
-  .control-group
-    .controls
-      = f.input :url, :class => 'input'
-  .control-group
-    .controls
-      = f.input :title, :class => 'input'
-  .control-group
-    .controls
-      = f.input :rates, :class => 'input'
-  .control-group
-    .controls
-      = f.input :user_id, :class => 'input'
-  .control-group
-    .controls
-      = f.input :tags, :input_html => {"data-pre" => @content.tag_map.to_json, :id => "contentTags"}
-  .form-actions
-    = f.submit nil, :class => 'btn btn-primary'
-    = link_to t('.cancel', :default => t("helpers.links.cancel")), |
-      contents_path, :class => 'btn'                               |
+.container
+  .col-md-8
+    = simple_form_for(@content, wrapper: :horizontal, :html=>{:class => 'form-horizontal'}) do |f|
+      = f.error_notification
+      = f.input :url, :label =>'URL', :placeholder => "Url"
+      = f.input :title, :label =>'Title', :placeholder => "Title"
+      = f.input :rates, :label =>'Rates'
+      = f.input :user_id, :label =>'UserId', :placeholder => "UserId"
+      = f.input :tags, :label =>'Tags', :input_html => {"data-pre" => @content.tag_map.to_json, :id => "contentTags"}
+      = f.button :submit ,'Create', :class => 'btn btn-primary'
+      = link_to t('.cancel', :default => t("helpers.links.cancel")),contents_path, :class => 'btn btn-danger'                             

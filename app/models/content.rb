@@ -12,7 +12,7 @@
   field :title, type: String
   field :url, type: String
   field :image_file_name, type:String
-  has_mongoid_attached_file :photo,:styles => {:original => ['1920x1680>', :jpg],:small    => ['150x150>',   :jpg]}  
+  has_mongoid_attached_file :photo,:styles => {:original => ['1920x1680>', :jpg],:small  => ['180x150!',   :jpg]}  
 
   rateable range: (0..5)
   belongs_to :user
@@ -35,12 +35,12 @@
   end  
 
   def as_json(options ={})
-    options = {only: [:_id, :url, :tags_array], methods: [:id, :photo_url]}
+    options = {only: [:_id,:title, :url, :tags_array], methods: [:id, :photo_url]}
     super
   end
 
   def photo_url
-    self.photo.url
+    self.photo.url(:small)
   end
 
 end

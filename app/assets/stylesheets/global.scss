@@ -1,0 +1,60 @@
+html {
+  position: relative;
+  min-height: 100%;
+}
+body {
+  /* Margin bottom by footer height */
+  padding-top: 30px;
+  margin-bottom: 60px;
+}
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 60px;
+  background-color: #f5f5f5;
+}
+
+.thumbnail {
+  position: relative;  
+  overflow: hidden;
+  min-height: 215px;
+
+    .bookmark-controls{
+      position: absolute;
+      z-index: 10;
+      padding:10px;
+      left: 0;
+      right: 0;
+      bottom: 0;
+
+    }
+    .bookmark-info {
+      text-transform: uppercase;
+      font-family: sans-serif;
+      font-size: 12px;
+      color:#FFFFFF;
+      position: absolute;
+      bottom: 0;
+      top:-100%;
+      left: 0;
+      right: 0;
+      height: 76%;
+      background-color: rgba(61,0,31,0.7);
+      @include transition(0.3s ease-in all);
+      z-index: 1;
+      padding: 10px;
+      span.label.label-default:nth-child(n+7)
+      {
+        visibility: hidden;
+      }
+    }
+
+    &:hover{
+      .bookmark-info{
+        top:0;
+
+      }
+    }
+}
