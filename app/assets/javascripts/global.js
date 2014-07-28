@@ -1,18 +1,9 @@
-
-loadTags = function(){
-  $("#contentTags").tokenInput("/contents/tags.json", {
-    preventDuplicates: true,
-    allowFreeTagging: true,
-    prePopulate: $("#content_tags").data("pre"),
-    theme: "facebook",    
-
-  });
+loadTags = function(){  
   $("#content_tags").tokenInput("/contents/tags.json", {
     preventDuplicates: true,
     prePopulate: $("#content_tags").data("pre"),
     theme: "facebook",    
-  });
-  
+  });  
 };
 
 function filterInit(){
@@ -49,10 +40,3 @@ function filterInit(){
   }
   return FilterJS(conc, "#content_list",view,settings)
 }
-
-
-$(document).on('ready page:load', function(){
-  loadTags();
-  window.fjs = filterInit();
-  console.log(conc)
-})

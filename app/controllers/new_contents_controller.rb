@@ -1,0 +1,2 @@
+class NewContentsController < ApplicationController
+end

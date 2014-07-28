@@ -1,6 +1,7 @@
 class ContentsController < ApplicationController
 	
 	def index
+		#binding.pry
 		@contents = Content.all.desc(:created_at)   
 		@con = Content.new
 		@c = []
@@ -15,19 +16,30 @@ class ContentsController < ApplicationController
 
 	def new
 		@content = Content.new
-		@con = []
+		@con = []	
+	end
+
+	def details
+		@content = Content.find(params[:id]) 
+		respond_to do |format|
+			format.js {}
+		end
 	end
 
 	def create
 		@content = Content.new(content_params_input)
 		@content.image_file_name = @content.title
 
-		if @content.valid?
-			@content.save
+		if @content.save 
 			ImageWorker.perform_async(@content.id.to_s)  
-			redirect_to contents_path
+			respond_to do |format|
+				format.html {redirect_to contents_path}
+			end
 		else
-			render action: 'new'
+			respond_to do |format| 
+				format.html { render action: 'new' }
+				
+			end
 		end
 	end
 

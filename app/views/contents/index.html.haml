@@ -1,3 +1,5 @@
+- content_for :indexpg do
+  = stylesheet_link_tag :application 
 .navbar.navbar-default.navbar-fixed-top{role: "navigation"}
   .container
     .navbar-header
@@ -18,40 +20,59 @@
         
     / /.nav-collapse
 / Begin page content
+
+%a.btn.btn-warning{href: "javascript:void((function(d){var e=d.createElement('script');e.setAttribute('type','text/javascript');e.setAttribute('charset','UTF-8');e.setAttribute('src','http://localhost:8080/assets/screamout.js');e.setAttribute('id','screamoutjs');d.body.appendChild(e)})(document));", title: "Add to Bookmarks"} Mark It!!
+
 .container
-  .page-header
+  .row
     .col-md-3
       = link_to t('.new', :default => t("helpers.links.new")), new_content_path, :class => 'btn btn-primary'
       = simple_form_for @con, :html => { :class => 'form-search' } do |f|
         .form-group
           = f.input :tags ,:type=> 'search', :class => 'input-medium search-query',:input_html => {"data-pre"=> @c.to_a.map.to_json }
 
-  %p#target
-  #content_list
-    .row
-      %script#template{:type => "x-tmpl-mustache"}
-        .col-md-3.fjs-ele
-          .thumbnail
-            %a{target:"blank" ,href:"{{url}}" }
-              %img{src: "{{photo_url}}"}
-            .bookmark-controls
-              %a.btn.btn-primary{href: "/contents/{{_id}}/edit", role: "button"}
-                %span.glyphicon.glyphicon-edit
-              %a.btn.btn-default{href:"/contents/{{_id}}",data:{method:"delete" ,confirm:"Are you sure?" }}
-                %span.glyphicon.glyphicon-trash
-            .bookmark-info
-              .h5
-                {{title}}
-              {{#tags_array}}
-              %span.label.label-default {{.}}
-              {{/tags_array}}
+  
+  %div
+    .row#content_list
+     
+#myModal.modal.fade
+  .modal-dialog
+    .modal-content
+      .modal-body
+
+#screamout
 
 .footer
   .container
     %p.text-muted Place sticky footer content here.
+
+%script#template{:type => "x-tmpl-mustache"}
+  .col-md-3.fjs-ele
+    .thumbnail
+      %img{src: "{{photo_url}}"}
+      .bookmark-controls
+        %a.btn.btn-primary.edit-control{:id => "{{_id}}", href: "/contents/{{_id}}/details", "data-remote" => true}
+          %span.glyphicon.glyphicon-edit
+        %a.btn.btn-default{href:"/contents/{{_id}}",data:{method:"delete" ,confirm:"Are you sure?" }}
+          %span.glyphicon.glyphicon-trash
+      %a{target:"_blank" ,href:"{{url}}" }
+        .bookmark-info
+          .h5
+            {{title}}
+          {{#tags_array}}
+          %span.label.label-default {{.}}
+          {{/tags_array}}
+
 /
   Bootstrap core JavaScript
   \==================================================
 / Placed at the end of the document so the pages load faster
 :javascript
-  conc = #{@contents.to_json}
+  
+  parent.window.postMessage("removetheiframe", "*");
+  conc = #{@contents.to_json}  
+  $(document).on('ready page:load', function(){
+    loadTags();
+    filterInit();
+  })
+

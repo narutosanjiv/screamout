@@ -29,5 +29,5 @@
 //= require bootstrap/popover
 //= require filter
 //= require mustache
-
 //= require global
+//= require contents

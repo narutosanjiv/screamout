@@ -1,1 +1,1 @@
-Rails.application.config.assets.precompile += ['jquery.js', 'jquery.tokeninput.js', 'jquery_ujs.js','token-input-facebook.css','token-input.css']
+Rails.application.config.assets.precompile += [ 'jquery.tokeninput.js','token-input-facebook.css','token-input.css', 'contents.js.coffee','screamout.js.coffee']

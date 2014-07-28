@@ -1,10 +1,13 @@
 require 'sidekiq/web'
 
 Rails.application.routes.draw do
+  resources :iframe_contents
   resources :contents do
+    member do
+      get 'details'
+    end
     collection do
-      get 'tags'
-      get 'content_ids'
+      get 'tags'      
     end
   end
   devise_for :users, controllers: { omniauth_callbacks: "omniauth_callbacks" }
