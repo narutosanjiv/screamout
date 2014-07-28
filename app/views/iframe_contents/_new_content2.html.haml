@@ -1,0 +1,19 @@
+- content_for :indexpg do
+  = stylesheet_link_tag :blu 
+%button.close#cancel{type: "button"}
+  %span{"aria-hidden" => "true"} &times
+  %span.sr-only Close
+.container-fluid{:style => "opacity:1;"}
+  .col-md-8
+    = simple_form_for(@content, wrapper: :horizontal, :html=>{:class => 'form-horizontal', :id=>"newform"}) do |f|
+      = f.error_notification
+      = f.input :url, :label =>'URL', :placeholder => "Url"
+      = f.input :title, :label =>'Title', :placeholder => "Title"
+      = f.input :rates, :label =>'Rates'
+      = f.input :user_id, :label =>'UserId', :placeholder => "UserId"
+      = f.input :tags, :label =>'Tags', :input_html => {"data-pre" => @content.tag_map.to_json, :id => "contentTags"}
+      = f.button :submit ,'Create', :class => 'btn btn-primary', :id => "create"
+                                  
+:javascript  
+  $('#cancel').on ('click',function(){parent.window.postMessage("removetheiframe", "*");})
+    

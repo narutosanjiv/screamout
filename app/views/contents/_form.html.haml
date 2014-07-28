@@ -8,4 +8,7 @@
       = f.input :user_id, :label =>'UserId', :placeholder => "UserId"
       = f.input :tags, :label =>'Tags', :input_html => {"data-pre" => @content.tag_map.to_json, :id => "contentTags"}
       = f.button :submit ,'Create', :class => 'btn btn-primary'
-      = link_to t('.cancel', :default => t("helpers.links.cancel")),contents_path, :class => 'btn btn-danger'                             
+      = f.button :button ,'Cancel',:class => 'btn btn-danger'
+:javascript  
+  $('#cancel').on ('click',function(){$('#myModal').modal('hide');})
+    

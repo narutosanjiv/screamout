@@ -14,23 +14,25 @@ screamout = ->
   }).appendTo('body')
 
 
+  jQ('*','body').not("#screamout").css("opacity","0.9")
+  jQ('*','body').not("#screamout").css("pointer-events","none")
+
   jQ('<iframe>', {
     style: "background-color: red"
     id:  'screamout',
     name: "newpage",
     frameborder: 0,
     scrolling: "no",
-    src: "http://localhost:8080/contents/new",
+    src: "http://localhost:8080/iframe_contents/new",
     allowTransparency: true
   }).appendTo('body')
   
-  jQ('*','body').not("#screamout").css("opacity","0.8")
-  jQ('*','body').not("#screamout").css("pointer-events","none")
 
   $("body").not('#screamout').click ->
     jQ('#screamout').remove()  
     jQ('*','body').not("#screamout").css("opacity","1")
     jQ('*','body').not("#screamout").css("pointer-events","none")
+    
 test = ->
   if @jQuery
     @jQ = jQuery    

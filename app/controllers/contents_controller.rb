@@ -1,5 +1,5 @@
 class ContentsController < ApplicationController
-	
+		
 	def index
 		#binding.pry
 		@contents = Content.all.desc(:created_at)   
@@ -16,7 +16,7 @@ class ContentsController < ApplicationController
 
 	def new
 		@content = Content.new
-		@con = []	
+		@con = []
 	end
 
 	def details
