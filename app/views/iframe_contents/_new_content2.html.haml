@@ -5,9 +5,9 @@
   %span.sr-only Close
 .container-fluid{:style => "opacity:1;"}
   .col-md-8
-    = simple_form_for(@content, wrapper: :horizontal, :html=>{:class => 'form-horizontal', :id=>"newform"}) do |f|
+    = simple_form_for(@content, wrapper: :horizontal,:url => iframe_contents_path, :html=>{:class => 'form-horizontal', :id=>"newform"}) do |f|
       = f.error_notification
-      = f.input :url, :label =>'URL', :placeholder => "Url"
+      = f.input :url, :label =>'URL', :placeholder => "Url", inner_html: {id: "urlid"}
       = f.input :title, :label =>'Title', :placeholder => "Title"
       = f.input :rates, :label =>'Rates'
       = f.input :user_id, :label =>'UserId', :placeholder => "UserId"
@@ -15,5 +15,10 @@
       = f.button :submit ,'Create', :class => 'btn btn-primary', :id => "create"
                                   
 :javascript  
-  $('#cancel').on ('click',function(){parent.window.postMessage("removetheiframe", "*");})
-    
+  getData = function(){
+    parent.window.
+  };
+
+  $('#cancel').on ('click',function(){
+    parent.window.postMessage("removetheiframe", "*");
+  })

@@ -1,0 +1,6 @@
+/*
+*= require bootstrap-sprockets
+*= require bootstrap
+*= require global
+*/
+@import "bootstrap";

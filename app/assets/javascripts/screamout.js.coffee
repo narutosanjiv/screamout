@@ -8,22 +8,34 @@ screamout = ->
   window.scrollTo(0, 0)
  
   jQ('<link>',  {
-    href: "http://localhost:8080/assets/screamout.css",
+    href: "http://localhost:8080/assets/iframe.css",
     rel: "stylesheet",
     type: "text/css"
   }).appendTo('body')
+
+
+  jQuery.ajax
+    url: "http://localhost:8080/iframe_contents/new"
+    cache: false
+    data: {
+      url: document.URL
+      title: document.title
+    }
+    type: "GET"
+    success: (response) ->
+
+
 
 
   jQ('*','body').not("#screamout").css("opacity","0.9")
   jQ('*','body').not("#screamout").css("pointer-events","none")
 
   jQ('<iframe>', {
-    style: "background-color: red"
     id:  'screamout',
     name: "newpage",
     frameborder: 0,
     scrolling: "no",
-    src: "http://localhost:8080/iframe_contents/new",
+    src: "http://localhost:8080/iframe_contents/new/",
     allowTransparency: true
   }).appendTo('body')
   

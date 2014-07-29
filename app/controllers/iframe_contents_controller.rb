@@ -1,8 +1,15 @@
 class IframeContentsController < ApplicationController
   layout 'iframe_application'
   def new
+
     @content = Content.new
-    @con = []
+    con = {}
+    @content.url = params[:url]
+    @content.title = params[:title]
+      
+    respond_to do |format| 
+      format.json{render json: @content}   
+    end
   end
 
   def create
@@ -21,4 +28,9 @@ class IframeContentsController < ApplicationController
     end
   end
 
+  private
+  
+    def content_params_input
+      params.require(:content).permit(:url,:photo, :title, :tags, :rates, :user_id)
+    end
 end
