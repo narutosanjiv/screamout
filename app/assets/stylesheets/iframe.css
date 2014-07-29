@@ -1,0 +1,15 @@
+#screamout
+{
+    width: 50%;
+    height: 500px;
+    position: absolute;
+    top: 0;
+    margin-left: 25%;
+    margin-top: 60px;
+    z-index: 100000;
+    opacity: 1 !important;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 6px;
+    background-clip: padding-box;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.5);
+}

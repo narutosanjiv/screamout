@@ -8,7 +8,7 @@ screamout = ->
   window.scrollTo(0, 0)
  
   jQ('<link>',  {
-    href: "http://localhost:8080/assets/screamout.css",
+    href: "http://localhost:8080/assets/iframe.css",
     rel: "stylesheet",
     type: "text/css"
   }).appendTo('body')
@@ -18,7 +18,6 @@ screamout = ->
   jQ('*','body').not("#screamout").css("pointer-events","none")
 
   jQ('<iframe>', {
-    style: "background-color: red"
     id:  'screamout',
     name: "newpage",
     frameborder: 0,
@@ -44,8 +43,14 @@ receiveMessage = (event) ->
     jQ('#screamout').remove()  
     jQ('*','body').not("#screamout").css("opacity","1")
     jQ('*','body').not("#screamout").css("pointer-events","none")
+  if event.data is "fetch"
+    url = document.URL
+    title = document.title
+    frame = document.getElementById("screamout")
+    frame.contentWindow.postMessage(title + ',' + url, "*")
   return
-window.addEventListener "message", receiveMessage, false   
+
+window.addEventListener "message", receiveMessage, false
 
 @testInterval = setInterval(->
   (test())

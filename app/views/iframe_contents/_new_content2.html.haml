@@ -1,19 +1,36 @@
-- content_for :indexpg do
-  = stylesheet_link_tag :blu 
-%button.close#cancel{type: "button"}
-  %span{"aria-hidden" => "true"} &times
-  %span.sr-only Close
-.container-fluid{:style => "opacity:1;"}
-  .col-md-8
-    = simple_form_for(@content, wrapper: :horizontal, :html=>{:class => 'form-horizontal', :id=>"newform"}) do |f|
-      = f.error_notification
-      = f.input :url, :label =>'URL', :placeholder => "Url"
-      = f.input :title, :label =>'Title', :placeholder => "Title"
-      = f.input :rates, :label =>'Rates'
-      = f.input :user_id, :label =>'UserId', :placeholder => "UserId"
-      = f.input :tags, :label =>'Tags', :input_html => {"data-pre" => @content.tag_map.to_json, :id => "contentTags"}
-      = f.button :submit ,'Create', :class => 'btn btn-primary', :id => "create"
-                                  
-:javascript  
-  $('#cancel').on ('click',function(){parent.window.postMessage("removetheiframe", "*");})
-    
+.iframeheading
+  %strong Screamout
+  what you have found!!!
+  %button.close#cancel{type: "button"}
+    %span{"aria-hidden" => "true"} &times
+    %span.sr-only Close
+.content
+  .container-fluid{:style => "opacity:1;"}
+    .col-md-8
+      = simple_form_for(@content, url: 'http://localhost:8080/iframe_contents',wrapper: :horizontal, :html=>{:class => 'form-horizontal', :id=>"newform",
+          onload: "askData()"}) do |f|
+        = f.error_notification
+        = f.input :url, :label =>'URL', :placeholder => 'Url'
+        = f.input :title, :label =>'Title', :placeholder => 'Title'
+        = f.input :rates, :label =>'Rates'
+        = f.input :user_id, :label =>'UserId', :placeholder => "UserId"
+        = f.input :tags, :label =>'Tags', :input_html => {"data-pre" => @content.tag_map.to_json, :id => "contentTags"}
+        = f.button :submit ,'Create', :class => 'btn btn-primary', :id => "create"
+
+  :javascript
+    askData = function(){
+      parent.window.postMessage("fetch", "*");
+    };
+
+
+    var receiveMessage = function(event){
+      data = event.data.split(',');
+
+      document.getElementById('content_title').value = data[0];
+      document.getElementById('content_url').value = data[1];
+    };
+
+    $('#cancel').on ('click',function(){parent.window.postMessage("removetheiframe", "*");})
+
+    window.addEventListener("message", receiveMessage, false);
+    window.onload = askData;
