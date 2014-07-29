@@ -56,8 +56,14 @@ receiveMessage = (event) ->
     jQ('#screamout').remove()  
     jQ('*','body').not("#screamout").css("opacity","1")
     jQ('*','body').not("#screamout").css("pointer-events","none")
+  if event.data is "fetch"
+    url = document.URL
+    title = document.title
+    frame = document.getElementById("screamout")
+    frame.contentWindow.postMessage(title + ',' + url, "*")
   return
-window.addEventListener "message", receiveMessage, false   
+
+window.addEventListener "message", receiveMessage, false
 
 @testInterval = setInterval(->
   (test())
