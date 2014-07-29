@@ -6,7 +6,7 @@ class IframeContentsController < ApplicationController
   end
 
   def create
-    @content = Content.new(content_params_input)
+    @content = Content.new(content_input_params)
     @content.image_file_name = @content.title
 
     if @content.save 
@@ -21,4 +21,8 @@ class IframeContentsController < ApplicationController
     end
   end
 
+  private
+  def content_input_params
+    params.require(:content).permit(:url, :title)
+  end
 end

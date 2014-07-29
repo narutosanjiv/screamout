@@ -43,6 +43,8 @@ receiveMessage = (event) ->
     jQ('#screamout').remove()  
     jQ('*','body').not("#screamout").css("opacity","1")
     jQ('*','body').not("#screamout").css("pointer-events","none")
+    elem = document.getElementById("screamout")
+    elem.parentNode.removeChild elem
   if event.data is "fetch"
     url = document.URL
     title = document.title

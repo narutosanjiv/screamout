@@ -12,8 +12,8 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require jquery.tokeninput
 //= require turbolinks
+//= require jquery.tokeninput
 
 //= require bootstrap/affix
 //= require bootstrap/alert

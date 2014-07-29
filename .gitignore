@@ -24,3 +24,4 @@
 *.swp
 public/system/contents/photos/*
 .idea/
+public/snapshots/*
