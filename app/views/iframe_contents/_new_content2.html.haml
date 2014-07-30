@@ -1,14 +1,16 @@
 .iframeheading
-  %strong Screamout
-  what you have found!!!
-  %button.close#cancel{type: "button"}
-    %span{"aria-hidden" => "true"} &times
-    %span.sr-only Close
+  %h4
+    %center
+      %strong Screamout
+    %button.close#cancel{type: "button"}
+      %span{"aria-hidden" => "true"} &times
+      %span.sr-only Close
 .content
   .container-fluid{:style => "opacity:1;"}
     .col-md-8
-      = simple_form_for(@content, url: 'http://localhost:8080/iframe_contents',wrapper: :horizontal, :html=>{:class => 'form-horizontal', :id=>"newform",
-          onload: "askData()"}) do |f|
+      = simple_form_for(@content, url: iframe_contents_path, wrapper: :horizontal,
+       :html=>{:class => 'form-horizontal', :id=>"newform"}) do |f|
+        = hidden_field_tag :authenticity_token, form_authenticity_token
         = f.error_notification
         = f.input :url, :label =>'URL', :placeholder => 'Url'
         = f.input :title, :label =>'Title', :placeholder => 'Title'
@@ -31,6 +33,7 @@
     };
 
     $('#cancel').on ('click',function(){parent.window.postMessage("removetheiframe", "*");})
+    
 
     window.addEventListener("message", receiveMessage, false);
     window.onload = askData;
