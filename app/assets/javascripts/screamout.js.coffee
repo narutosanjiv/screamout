@@ -5,46 +5,43 @@ if typeof jQuery == 'undefined'
   headElement.appendChild(linkElement)
 
 screamout = ->
-  window.scrollTo(0, 0)
+  if document.getElementById('screamout') == null
+    window.scrollTo(0, 0)
+   
+    jQ('<link>',  {
+      href: "http://localhost:8080/assets/iframe.css",
+      rel: "stylesheet",
+      type: "text/css"
+    }).appendTo('body')
+
+    jQ('*','body').not("#screamout").css("opacity","0.9")
+    jQ('*','body').not("#screamout").css("pointer-events","none")
+
+    addIframe()
+  else
+    closeIframe()
+    addIframe()
  
-  jQ('<link>',  {
-    href: "http://localhost:8080/assets/iframe.css",
-    rel: "stylesheet",
-    type: "text/css"
-  }).appendTo('body')
-
-
-  jQuery.ajax
-    url: "http://localhost:8080/iframe_contents/new"
-    cache: false
-    data: {
-      url: document.URL
-      title: document.title
-    }
-    type: "GET"
-    success: (response) ->
-
-
-
-
-  jQ('*','body').not("#screamout").css("opacity","0.9")
-  jQ('*','body').not("#screamout").css("pointer-events","none")
-
-  jQ('<iframe>', {
-    id:  'screamout',
-    name: "newpage",
-    frameborder: 0,
-    scrolling: "no",
-    src: "http://localhost:8080/iframe_contents/new/",
-    allowTransparency: true
-  }).appendTo('body')
-  
 
   $("body").not('#screamout').click ->
-    jQ('#screamout').remove()  
+    closeIframe()
+
+addIframe = ->
+      jQ('<iframe>', {
+        id:  'screamout',
+        name: "newpage",
+        frameborder: 0,
+        scrolling: "no",
+        src: "http://localhost:8080/iframe_contents/new/",
+        allowTransparency: true
+      }).appendTo('body')
+
+closeIframe = ->
+    jQ('#screamout').remove()
+    document.getElementById('screamoutjs').remove()
     jQ('*','body').not("#screamout").css("opacity","1")
     jQ('*','body').not("#screamout").css("pointer-events","none")
-    
+
 test = ->
   if @jQuery
     @jQ = jQuery    
@@ -53,9 +50,8 @@ test = ->
 
 receiveMessage = (event) ->
   if event.data is "removetheiframe"
-    jQ('#screamout').remove()  
-    jQ('*','body').not("#screamout").css("opacity","1")
-    jQ('*','body').not("#screamout").css("pointer-events","none")
+    closeIframe()
+
   if event.data is "fetch"
     url = document.URL
     title = document.title

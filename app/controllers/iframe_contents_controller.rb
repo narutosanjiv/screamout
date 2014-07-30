@@ -4,12 +4,7 @@ class IframeContentsController < ApplicationController
 
     @content = Content.new
     con = {}
-    @content.url = params[:url]
-    @content.title = params[:title]
-      
-    respond_to do |format| 
-      format.json{render json: @content}   
-    end
+    
   end
 
   def create
