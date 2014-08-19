@@ -1,0 +1,38 @@
+.iframeheading
+  %h4
+    %center
+      %strong Screamout
+    %button.close#cancel{type: "button"}
+      %span{"aria-hidden" => "true"} &times
+      %span.sr-only Close
+.content
+  .container-fluid{:style => "opacity:1;"}
+    .col-md-8
+      = simple_form_for(@content, url: iframe_contents_path,
+       :html=>{:class => 'form-horizontal', :id=>"newform"}) do |f|
+        = hidden_field_tag :authenticity_token, form_authenticity_token
+        = f.error_notification
+        = f.input :url, :label =>'URL', :placeholder => 'Url'
+        = f.input :title, :label =>'Title', :placeholder => 'Title'
+        = f.input :rates, :label =>'Rates'
+        = f.input :tags, :label =>'Tags', :input_html => {"data-pre" => @content.tag_map.to_json, :id => "contentTags"}
+        = f.button :submit ,'Create', :class => 'btn btn-primary', :id => "create"
+
+  :javascript
+    askData = function(){
+      parent.window.postMessage("fetch", "*");
+    };
+
+
+    var receiveMessage = function(event){
+      data = event.data.split(',');
+
+      document.getElementById('content_title').value = data[0];
+      document.getElementById('content_url').value = data[1];
+    };
+
+    $('#cancel').on ('click',function(){parent.window.postMessage("removetheiframe", "*");})
+    
+
+    window.addEventListener("message", receiveMessage, false);
+    window.onload = askData;

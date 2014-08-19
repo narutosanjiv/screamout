@@ -1,0 +1,55 @@
+.container
+  .pull-right
+    %a.btn.btn-warning{href: "javascript:void((function(d){var e=d.createElement('script');e.setAttribute('type','text/javascript');e.setAttribute('charset','UTF-8');e.setAttribute('src','http://localhost:8080/assets/screamout/screamout.js');e.setAttribute('id','screamoutjs');d.body.appendChild(e)})(document));", title: "Add to Bookmarks"} Mark It!!
+
+  .row
+    .span8
+      = link_to t('.new', :default => t("helpers.links.new")), new_content_path, :class => 'btn btn-primary'
+      = simple_form_for @con, :html => { :class => 'form-search' } do |f|
+        .control-group
+          = f.input :tags ,:type=> 'search', :class => 'input-medium search-query',:input_html => {"data-pre"=> @c.to_a.map.to_json }
+
+  
+  %div
+    .row#content_list
+     
+#myModal.modal.fade
+  .modal-dialog
+    .modal-content
+      .modal-body
+
+#screamout
+
+.footer
+  .container
+    %p.text-muted Place sticky footer content here.
+
+%script#template{:type => "x-tmpl-mustache"}
+  .span3.fjs-ele
+    .thumbnail
+      %img{src: "{{photo_url}}"}
+      .bookmark-controls
+        %a.btn.btn-primary.edit-control{:id => "{{id}}", href: "/screamout/contents/{{_id}}/details", "data-remote" => true}
+          %span.icon-edit
+        %a.btn.btn-default{href:"/screamout/contents/{{id}}",data:{method:"delete" ,confirm:"Are you sure?" }}
+          %span.icon.icon-trash
+      %a{target:"_blank" ,href:"{{url}}" }
+        .bookmark-info
+          .h5
+            {{title}}
+          {{#tags_array}}
+          %span.label.label-default {{.}}
+          {{/tags_array}}
+
+/
+  Bootstrap core JavaScript
+/ Placed at the end of the document so the pages load faster
+:javascript
+  
+  parent.window.postMessage("removetheiframe", "*");
+  conc = #{@contents.to_json}  
+  $(document).on('ready page:load', function(){
+    loadTags();
+    filterInit();
+  })
+

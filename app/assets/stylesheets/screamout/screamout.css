@@ -1,0 +1,14 @@
+/*
+ *= require twitter-bootstrap-static/bootstrap
+ *
+*/
+
+.content{
+    padding: 20px;
+}
+.iframeheading{
+
+    padding-top: 15px;
+    padding-right: 15px;
+    padding-left: 15px;
+}
