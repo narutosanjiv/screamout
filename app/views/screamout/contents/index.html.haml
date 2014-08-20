@@ -1,6 +1,6 @@
 .container
   .pull-right
-    %a.btn.btn-warning{href: "javascript:void((function(d){var e=d.createElement('script');e.setAttribute('type','text/javascript');e.setAttribute('charset','UTF-8');e.setAttribute('src','http://localhost:8080/assets/screamout/screamout.js');e.setAttribute('id','screamoutjs');d.body.appendChild(e)})(document));", title: "Add to Bookmarks"} Mark It!!
+    %a.btn.btn-warning{href: "javascript:void((function(d){var e=d.createElement('script');e.setAttribute('type','text/javascript');e.setAttribute('charset','UTF-8');e.setAttribute('src','#{HOST_URL}/assets/screamout/screamout.js');e.setAttribute('id','screamoutjs');d.body.appendChild(e)})(document));", title: "Add to Bookmarks"} Mark It!!
 
   .row
     .span8
@@ -41,6 +41,7 @@
   Bootstrap core JavaScript
 / Placed at the end of the document so the pages load faster
 :javascript
+  HOST_URL = "#{HOST_URL}";
   parent.window.postMessage("removetheiframe", "*");
   conc = #{@contents.to_json}  
   tags_hash = #{@tags_hash.to_json}

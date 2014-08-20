@@ -7,9 +7,10 @@ if typeof jQuery == 'undefined'
 screamout = ->
   if document.getElementById('screamout') == null
     window.scrollTo(0, 0)
-   
+    url = $('#screamoutjs').attr('src').split('/') 
+    Host = url[0] + "//" + url[2]
     jQ('<link>',  {
-      href: "http://localhost:8080/assets/screamout/iframe.css",
+      href: Host + "/assets/screamout/iframe.css",
       rel: "stylesheet",
       type: "text/css"
     }).appendTo('body')
@@ -17,22 +18,22 @@ screamout = ->
     jQ('*','body').not("#screamout").css("opacity","0.9")
     jQ('*','body').not("#screamout").css("pointer-events","none")
 
-    addIframe()
+    addIframe(Host)
   else
     closeIframe()
-    addIframe()
+    addIframe(Host)
  
 
   $("body").not('#screamout').click ->
     closeIframe()
 
-addIframe = ->
+addIframe = (Host)->
       jQ('<iframe>', {
         id:  'screamout',
         name: "newpage",
         frameborder: 0,
         scrolling: "no",
-        src: "http://localhost:8080/screamout/iframe_contents/new/",
+        src: Host + "/screamout/iframe_contents/new/",
         allowTransparency: true
       }).appendTo('body')
 
