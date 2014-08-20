@@ -37,3 +37,11 @@ gem 'haml'
 gem 'haml-rails'
 gem 'pry'
 
+group :test do
+  gem 'rspec-rails', '2.14.2'
+  gem 'mongoid-rspec'
+  gem 'factory_girl_rails'
+  gem 'database_cleaner'
+  gem 'simplecov', '~> 0.7.1'
+  gem 'faker'
+end

@@ -8,7 +8,7 @@
     = f.input :tags, :input_html => {class: 'input-xlarge tags_container', multiple: true}
     .div{align: 'center'}
       = f.button :submit ,'Create', :class => 'btn btn-primary'
-      = f.button :button ,'Cancel',:class => 'btn btn-danger'
+      = link_to "Cancel","javascript:void(0)",id: 'cancel', class: 'btn btn-danger'
 :javascript
   var tag =new Array();
   tag = #{@tags}
