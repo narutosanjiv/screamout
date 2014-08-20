@@ -1,8 +1,5 @@
 - content_for :indexpg do
   = stylesheet_link_tag :blu 
-%button.close#cancel{type: "button"}
-  %span{"aria-hidden" => "true"} &times
-  %span.sr-only Close
 .container-fluid{:style => "opacity:1;"}
   .col-md-8
     = simple_form_for(@content, :html=>{:class => 'form-horizontal', :id=>"newform"}) do |f|
@@ -10,10 +7,9 @@
       = f.input :url, label: 'URL', :placeholder => "Url", :input_html => {class: "input-xxlarge"}
       = f.input :title, :label =>'Title', :placeholder => "Title", :input_html => {class: "input-xxlarge"}
       = f.input :rates, :label => 'Rates', :input_html => {class: "input-xxlarge"}
-      = f.input :tags, :label => 'Tags', :input_html => {"data-pre" => @content.tag_map.to_json, :id => "contentTags", class: "input-xxlarge"}
+      = f.input :tags, :label => 'Tags', :input_html => {:id => "contentTags", class: "input-xxlarge"}
       .control-group
         = f.button :submit ,'Create', :class => 'btn btn-primary', :id => "create"
-                                  
 :javascript  
-  $('#cancel').on ('click',function(){parent.window.postMessage("removetheiframe", "*");})
+  $('#contentTags').select2({tokenSeparators: [",", " "], placeholder: 'Select Tag', tags: #{@tags_hash.to_json}, allowClear: true})
     

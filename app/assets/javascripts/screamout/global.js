@@ -1,9 +1,14 @@
-loadTags = function(){  
-  $("#content_tags").tokenInput("/screamout/contents/tags.json", {
-    preventDuplicates: true,
-    prePopulate: $("#content_tags").data("pre"),
-    theme: "facebook",    
-  });  
+loadTags = function(){
+  console.log($('.search-query'));
+
+$('.search-query').on('change', function(e) {
+  var selected_vals = $.map($('.search-query').select2('data'), function(e, i){return e.text}).join(',')
+  $('#content_tags').val(selected_vals);
+  content_filter.filter();
+});
+$('div.container').on('click', 'a.select2-choice', function(e) {
+   
+});
 };
 
 function filterInit(){

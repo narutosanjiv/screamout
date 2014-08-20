@@ -7,7 +7,7 @@
       = link_to t('.new', :default => t("helpers.links.new")), new_content_path, :class => 'btn btn-primary'
       = simple_form_for @con, :html => { :class => 'form-search' } do |f|
         .control-group
-          = f.input :tags ,:type=> 'search', :class => 'input-medium search-query',:input_html => {"data-pre"=> @c.to_a.map.to_json }
+          = f.input :tags ,:type=> 'search', input_html: {:class => 'input-medium search-query input-xxlarge'}
 
   
   %div
@@ -45,11 +45,12 @@
   Bootstrap core JavaScript
 / Placed at the end of the document so the pages load faster
 :javascript
-  
   parent.window.postMessage("removetheiframe", "*");
   conc = #{@contents.to_json}  
+  tags_hash = #{@tags_hash.to_json}
+  $(".search-query").select2({data: #{@tags_hash.to_json}, multiple: true})
   $(document).on('ready page:load', function(){
     loadTags();
-    filterInit();
+    window.content_filter = filterInit();
   })
 

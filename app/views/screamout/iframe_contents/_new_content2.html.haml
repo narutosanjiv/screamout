@@ -2,23 +2,23 @@
   %h4
     %center
       %strong Screamout
-    %button.close#cancel{type: "button"}
-      %span{"aria-hidden" => "true"} &times
-      %span.sr-only Close
 .content
   .container-fluid{:style => "opacity:1;"}
-    .col-md-8
+    .span8
       = simple_form_for(@content, url: iframe_contents_path,
        :html=>{:class => 'form-horizontal', :id=>"newform"}) do |f|
         = hidden_field_tag :authenticity_token, form_authenticity_token
         = f.error_notification
-        = f.input :url, :label =>'URL', :placeholder => 'Url'
-        = f.input :title, :label =>'Title', :placeholder => 'Title'
-        = f.input :rates, :label =>'Rates'
-        = f.input :tags, :label =>'Tags', :input_html => {"data-pre" => @content.tag_map.to_json, :id => "contentTags"}
-        = f.button :submit ,'Create', :class => 'btn btn-primary', :id => "create"
-
+        = f.input :url, :label =>'URL', :placeholder => 'Url', input_html:{class: 'input-xxlarge'}
+        = f.input :title, :label =>'Title', :placeholder => 'Title', input_html:{class: 'input-xxlarge'}  
+        = f.input :rates, :label =>'Rates', input_html:{class: 'input-xxlarge'}  
+        = f.input :tags, :label =>'Tags', :input_html => {class: 'input-xxlarge', :id => "contentTags"}
+        
+        .div{align: 'center'}
+          = f.button :submit ,'Create', :class => 'btn btn-primary', :id => "create"
+          = f.button :button ,'Cancel', :class => 'btn btn-danger', :id => "cancel"
   :javascript
+    $('#contentTags').select2({tokenSeparators: [",", " "], placeholder: 'Select Tag', tags: #{@tags_hash.to_json}})
     askData = function(){
       parent.window.postMessage("fetch", "*");
     };

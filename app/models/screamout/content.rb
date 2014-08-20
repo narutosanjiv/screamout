@@ -43,5 +43,14 @@ module Screamout
       self.photo.url(:small)
     end
 
+    def self.get_all_tags
+      tags_hash =[]
+      tags = Content.tags.collect(&:capitalize).sort
+      tags = tags.flatten.uniq.sort
+      tags.each.with_index do |tag,index|
+        tags_hash << {id: index, text: tag}
+      end
+      tags_hash
+    end
   end
 end

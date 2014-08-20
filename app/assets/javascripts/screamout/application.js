@@ -11,9 +11,9 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
-//= require screamout/jquery.tokeninput
 //= require twitter/bootstrap
 //= require screamout/filter
 //= require screamout/mustache
 //= require screamout/global
 //= require screamout/contents
+//= require screamout/select2.min

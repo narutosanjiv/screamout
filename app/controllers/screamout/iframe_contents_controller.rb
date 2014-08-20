@@ -2,10 +2,10 @@ module Screamout
   class IframeContentsController < ApplicationController
     layout 'screamout/iframe_application'
     def new
-
       @content = Content.new
-      con = {}
-
+      @tags_hash = Content.get_all_tags
+      puts "GGGGGGGGGGGGGG"
+      puts @tags_hash
     end
 
     def create

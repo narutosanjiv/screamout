@@ -5,14 +5,13 @@
     = f.input :url, :label =>'URL', :placeholder => "Url", :input_html => {class: "input-xlarge"}
     = f.input :title, :label =>'Title', :placeholder => "Title", :input_html => {class: "input-xlarge"}
     = f.input :rates, :label =>'Rates', :input_html => {class: "input-xlarge"}
-    .control-group.row
-      .span1
-        = f.label :tags
-      .span7
-        = f.input :tags, :label => false, :input_html => {"data-pre" => @content.tag_map.to_json, :id => "contentTags"}
+    = f.input :tags, :input_html => {class: 'input-xlarge tags_container', multiple: true}
     .div{align: 'center'}
       = f.button :submit ,'Create', :class => 'btn btn-primary'
       = f.button :button ,'Cancel',:class => 'btn btn-danger'
-:javascript  
+:javascript
+  var tag =new Array();
+  tag = #{@tags}
+  $('.tags_container').select2({tags: tag, tokenSeparators: [",", " "]})
   $('#cancel').on ('click',function(){$('#myModal').modal('hide');})
-    
+

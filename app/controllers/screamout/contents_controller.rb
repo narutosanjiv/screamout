@@ -4,9 +4,7 @@ module Screamout
     def index
       @contents = Content.all.desc(:created_at)   
       @con = Content.new
-      @c = []
-      #@contents = Content.tagged_with_all(/#{params[:q]}/)
-      #@conc = content_to_hash(@content_selected)
+      @tags_hash = Content.get_all_tags
     end
 
 
@@ -16,11 +14,13 @@ module Screamout
 
     def new
       @content = Content.new
-      @con = []
+      @tags_hash = Content.get_all_tags
     end
 
     def details
-      @content = Content.find(params[:id]) 
+      @content = Content.find(params[:id])
+      @tags = @content.tags.split(",")
+      @tags_hash = Content.get_all_tags
       respond_to do |format|
         format.js {}
       end
@@ -64,7 +64,8 @@ module Screamout
       @content = Content.find(params[:id])
       @con = @content.tags.split(",")
       @con = tags_to_hash(@con)
-      if @content.update_attributes(content_params_input)
+
+      if @content.update_attributes!(content_params_input)
         redirect_to contents_path
       else
         render action: 'edit'
@@ -74,7 +75,6 @@ module Screamout
     def tags
       @contents = Content.tagged_with_all(/#{params[:q]}/)
       @tags = @contents.collect(&:tag_map).flatten.select{|t| t[:name] =~ /#{params[:q]}/}
-
       respond_to do |format|
         format.html {render html: @tags}
         format.json { render json: @tags}
@@ -95,7 +95,10 @@ module Screamout
     def content_params_input
       #TODO
       #params.require(:content).permit(:url,:photo, :title, :tags, :rates, :user_id)
-      params.require(:content).permit(:url,:photo, :title, :tags, :rates)
+      params[:content][:tags]= params[:content][:tags].first
+      p "KKKKKKKKKKK"
+      params[:content][:tags]
+      params.require(:content).permit(:url,:photo, :title,:rates, :tags)
     end
 
     def tags_to_hash(cons)
@@ -111,5 +114,6 @@ module Screamout
       end
       #binding.pry
     end
+
   end
 end
