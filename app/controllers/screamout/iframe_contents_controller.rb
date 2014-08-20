@@ -4,8 +4,6 @@ module Screamout
     def new
       @content = Content.new
       @tags_hash = Content.get_all_tags
-      puts "GGGGGGGGGGGGGG"
-      puts @tags_hash
     end
 
     def create

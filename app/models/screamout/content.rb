@@ -45,7 +45,7 @@ module Screamout
 
     def self.get_all_tags
       tags_hash =[]
-      tags = Content.tags.collect(&:capitalize).sort
+      tags = Content.tags.sort
       tags = tags.flatten.uniq.sort
       tags.each.with_index do |tag,index|
         tags_hash << {id: index, text: tag}

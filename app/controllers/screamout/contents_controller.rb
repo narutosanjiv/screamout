@@ -29,7 +29,8 @@ module Screamout
     def create
       @content = Content.new(content_params_input)
       @content.image_file_name = @content.title
-
+      user ||= current_user
+      @content.user = user unless user.blank?
       if @content.save 
         Screamout::ImageWorker.perform_async(@content.id.to_s)  
         respond_to do |format|
@@ -38,7 +39,6 @@ module Screamout
       else
         respond_to do |format| 
           format.html { render action: 'new' }
-
         end
       end
     end
@@ -66,6 +66,8 @@ module Screamout
       @con = tags_to_hash(@con)
 
       if @content.update_attributes!(content_params_input)
+        user ||= current_user 
+        @content.user = user unless user.blank?
         redirect_to contents_path
       else
         render action: 'edit'
@@ -96,8 +98,6 @@ module Screamout
       #TODO
       #params.require(:content).permit(:url,:photo, :title, :tags, :rates, :user_id)
       params[:content][:tags]= params[:content][:tags].first
-      p "KKKKKKKKKKK"
-      params[:content][:tags]
       params.require(:content).permit(:url,:photo, :title,:rates, :tags)
     end
 
