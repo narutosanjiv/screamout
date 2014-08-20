@@ -7,11 +7,11 @@ require "screamout/version"
 Gem::Specification.new do |s|
   s.name        = "screamout"
   s.version     = Screamout::VERSION
-  s.authors     = ["TODO: Your name"]
-  s.email       = ["TODO: Your email"]
-  s.homepage    = "TODO"
-  s.summary     = "TODO: Summary of Screamout."
-  s.description = "TODO: Description of Screamout."
+  s.authors     = ["Josh Software"]
+  s.email       = ["test@joshsoftware.com"]
+  s.homepage    = ""
+  s.summary     = "Rails engine."
+  s.description = ""
   s.license     = "MIT"
 
   s.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.rdoc"]

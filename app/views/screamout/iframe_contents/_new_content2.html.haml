@@ -9,12 +9,19 @@
        :html=>{:class => 'form-horizontal', :id=>"newform"}) do |f|
         = hidden_field_tag :authenticity_token, form_authenticity_token
         = f.error_notification
-        = f.input :url, :label =>'URL', :placeholder => 'Url', input_html:{class: 'input-xxlarge'}
-        = f.input :title, :label =>'Title', :placeholder => 'Title', input_html:{class: 'input-xxlarge'}  
-        = f.input :rates, :label =>'Rates', input_html:{class: 'input-xxlarge'}  
-        = f.input :tags, :label =>'Tags', :input_html => {class: 'input-xxlarge', :id => "contentTags"}
-        
-        .div{align: 'center'}
+        .row-fluid
+          = f.label :url, class: 'text-left'
+          = f.input :url, :label =>false, :placeholder => 'Url', input_html:{class: 'input-xxlarge margin40'}
+        .row-fluid
+          = f.label :title, class: 'text-left'
+          = f.input :title, :label =>false, :placeholder => 'Title', input_html:{class: 'input-xxlarge margin40'}  
+        .row-fluid
+          = f.label :rates, class: 'text-left'
+          = f.input :rates, :label =>false, input_html:{class: 'input-xxlarge margin40'}  
+        .row-fluid
+          = f.label :tags, class: 'text-left'
+          = f.input :tags, :label =>false, :input_html => {class: 'input-xxlarge margin40', :id => "contentTags"}
+        .row-fluid
           = f.button :submit ,'Create', :class => 'btn btn-primary', :id => "create"
           = f.button :button ,'Cancel', :class => 'btn btn-danger', :id => "cancel"
   :javascript

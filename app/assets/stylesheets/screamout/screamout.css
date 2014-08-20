@@ -14,3 +14,12 @@
     padding-right: 15px;
     padding-left: 15px;
 }
+
+.text-left{
+   text-align :left !important;
+}
+
+.margin40{
+    margin-left: -40%
+}
+
