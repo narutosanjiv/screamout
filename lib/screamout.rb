@@ -12,11 +12,8 @@ module Screamout
   require 'jquery-rails'
   require 'mongoid_taggable'
   require 'mongoid_rateable'
-  #require 'mongoid-paperclip'
-  #  #s.add_dependency 'jquery-raty-rails'
   require 'sidekiq'
   require 'haml-rails'
   require 'mongoid_paperclip'
-  require 'aws-sdk'
 
 end

@@ -1,1 +1,1 @@
-Rails.application.config.assets.precompile += [ 'screamout/contents.js.coffee','screamout/screamout.js.coffee','screamout/screamout.css']
+Rails.application.config.assets.precompile += [ 'screamout/contents.js.coffee','screamout/screamout.js.coffee','screamout/screamout.css', 'screamout/global.css', 'screamout/global.js', 'screamout/filter.js']

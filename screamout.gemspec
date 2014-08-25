@@ -27,7 +27,6 @@ Gem::Specification.new do |s|
   s.add_dependency 'mongoid_taggable'
   s.add_dependency 'mongoid_rateable'
   s.add_dependency 'mongoid-paperclip'
-  s.add_dependency 'aws-sdk', '~> 1.3.4'
 
   s.add_dependency 'sidekiq'
   s.add_dependency 'haml-rails'

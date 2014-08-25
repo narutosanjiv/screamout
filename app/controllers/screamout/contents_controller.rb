@@ -65,7 +65,7 @@ module Screamout
       @con = @content.tags.split(",")
       @con = tags_to_hash(@con)
 
-      if @content.update_attributes!(content_params_input)
+      if @content.update_attributes!(update_content_params_input)
         user = try(:current_user)
         @content.user = user
         redirect_to contents_path
@@ -95,8 +95,11 @@ module Screamout
 
     private
     def content_params_input
-      #TODO
-      #params.require(:content).permit(:url,:photo, :title, :tags, :rates, :user_id)
+      params[:content][:tags]= params[:content][:tags] unless params[:content][:tags].blank?
+      params.require(:content).permit(:url,:photo, :title,:rates, :tags)
+    end
+
+    def update_content_params_input
       params[:content][:tags]= params[:content][:tags].first unless params[:content][:tags].blank?
       params.require(:content).permit(:url,:photo, :title,:rates, :tags)
     end
