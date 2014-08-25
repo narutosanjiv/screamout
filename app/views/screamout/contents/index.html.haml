@@ -25,9 +25,9 @@
     .thumbnail
       %img{src: "{{photo_url}}"}
       .bookmark-controls
-        %a.btn.btn-primary.edit-control{:id => "{{id}}", href: "/screamout/contents/{{_id}}/details", "data-remote" => true}
+        %a.btn.btn-primary.edit-control{:id => "{{id.$oid}}", href: "/screamout/contents/{{_id.$oid}}/details", "data-remote" => true}
           %span.icon-edit
-        %a.btn.btn-default{href:"/screamout/contents/{{id}}",data:{method:"delete" ,confirm:"Are you sure?" }}
+        %a.btn.btn-default{href:"/screamout/contents/{{id.$oid}}",data:{method:"delete" ,confirm:"Are you sure?" }}
           %span.icon.icon-trash
       %a{target:"_blank" ,href:"{{url}}" }
         .bookmark-info
