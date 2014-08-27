@@ -38,7 +38,11 @@ module Screamout
       options = {only: [:_id,:title, :url, :tags_array], methods: [:id, :photo_url]}
       super
     end
-
+    
+    def id
+      self._id.to_s
+    end
+    
     def photo_url
       self.photo.url(:small)
     end
