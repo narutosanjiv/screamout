@@ -35,7 +35,7 @@ module Screamout
     end  
 
     def as_json(options ={})
-      options = {only: [:_id,:title, :url, :tags_array], methods: [:id, :photo_url]}
+      options = {only: [:_id,:title, :url, :tags_array], methods: [:id, :photo_url, :name]}
       super
     end
     
@@ -55,6 +55,10 @@ module Screamout
         tags_hash << {id: tag, text: tag}
       end
       tags_hash
+    end
+
+    def name
+      self.user.try(:name)
     end
   end
 end
