@@ -1,13 +1,16 @@
 .container
-  .pull-right
+  .pull-right{align: 'center'}
+    %label Drag and drop to make bookmark
     %a.btn.btn-warning{href: "javascript:void((function(d){var e=d.createElement('script');e.setAttribute('type','text/javascript');e.setAttribute('charset','UTF-8');e.setAttribute('src','#{HOST_URL}/assets/screamout/screamout.js');e.setAttribute('id','screamoutjs');d.body.appendChild(e)})(document));", title: "Add to Bookmarks"} Mark It!!
 
   .row
     .span8
       = link_to t('.new', :default => t("helpers.links.new")), new_content_path, :class => 'btn btn-primary'
       = simple_form_for @con, :html => { :class => 'form-search' } do |f|
+        %br
         .control-group
-          = f.input :tags ,:type=> 'search', input_html: {:class => 'input-medium search-query input-xxlarge'}
+          = f.input :tags ,:type=> 'search', label: false, input_html: {:class => 'input-medium search-query input-xxlarge'}
+           
 
   
   %div
@@ -24,11 +27,13 @@
   .span3.fjs-ele
     .thumbnail
       %img{src: "{{photo_url}}"}
+      {{#valid_user}}
       .bookmark-controls
         %a.btn.btn-primary.edit-control{:id => "{{id}}", href: "/screamout/contents/{{id}}/details", "data-remote" => true}
           %span.icon-edit
         %a.btn.btn-default{href:"/screamout/contents/{{id}}",data:{method:"delete" ,confirm:"Are you sure?" }}
           %span.icon.icon-trash
+      {{/valid_user}}
       %a{target:"_blank" ,href:"{{url}}" }
         .bookmark-info
           .h5
@@ -46,8 +51,9 @@
   HOST_URL = "#{HOST_URL}";
   parent.window.postMessage("removetheiframe", "*");
   conc = #{@contents.to_json}  
+  current_user = "#{try(:current_user).try(:id).try(:to_s)}";
   tags_hash = #{@tags_hash.to_json}
-  $(".search-query").select2({data: #{@tags_hash.to_json}, multiple: true})
+  $(".search-query").select2({data: #{@tags_hash.to_json}, multiple: true, placeholder: 'select tags to search'})
   $(document).on('ready page:load', function(){
     loadTags();
     window.content_filter = filterInit();

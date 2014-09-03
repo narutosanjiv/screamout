@@ -35,7 +35,7 @@ module Screamout
     end  
 
     def as_json(options ={})
-      options = {only: [:_id,:title, :url, :tags_array], methods: [:id, :photo_url, :name]}
+      options = {only: [:_id,:title, :url, :tags_array], methods: [:id, :photo_url, :name, :user_id]}
       super
     end
     
@@ -59,6 +59,10 @@ module Screamout
 
     def name
       self.user.try(:name)
+    end
+
+    def user_id
+      self.user.try(:id).try(:to_s)
     end
   end
 end

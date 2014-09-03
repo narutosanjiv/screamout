@@ -16,6 +16,14 @@ function filterInit(){
   var view = function(conc){
     conc.tags = conc.tags_array.join(',')
     console.log(conc);
+    console.log(current_user);
+    console.log(conc.user_id);
+    if(current_user == conc.user_id)
+      conc.valid_user = true;
+    else if(current_user == "")
+      conc.valid_user = true;
+    else
+      conc.valid_user = false;
     return Mustache.render(template, conc);
   }
 
