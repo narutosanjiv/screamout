@@ -1,6 +1,8 @@
 module Screamout
   class IframeContentsController < ApplicationController
     layout 'screamout/iframe_application'
+    before_filter :remove_xss_protection
+
     def new
       @content = Content.new
       @tags_hash = Content.get_all_tags
@@ -27,6 +29,11 @@ module Screamout
 
     def content_params_input
       params.require(:content).permit(:url,:photo, :title, :tags, :rates)
+    end
+
+    def remove_xss_protection
+      response.headers.delete_if { |key| key == "X-XSS-Protection" }
+      response.headers['Content-Security-Policy'] = "default-src: 'self' #{request.protocol}#{request.host_with_port}"
     end
   end
 end
