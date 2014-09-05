@@ -1,7 +1,7 @@
 .container
   .pull-right{align: 'center'}
     %label Drag and drop to make bookmark
-    %a.btn.btn-warning{href: "javascript:void((function(d){var e=d.createElement('script');e.setAttribute('type','text/javascript');e.setAttribute('charset','UTF-8');e.setAttribute('src','#{HOST_URL}/assets/screamout/screamout.js');e.setAttribute('id','screamoutjs');d.body.appendChild(e)})(document));", title: "Add to Bookmarks"} Mark It!!
+    %a.btn.btn-warning{href: "javascript:void((function(d){var e=d.createElement('script');e.setAttribute('type','text/javascript');e.setAttribute('charset','UTF-8');e.setAttribute('src','#{HOST_URL}/assets/screamout/screamout.js');e.setAttribute('id','screamoutjs');d.body.appendChild(e)})(document));", title: "Add to Bookmarks"} Screamout!!
 
   .row
     .span8
@@ -26,7 +26,7 @@
 %script#template{:type => "x-tmpl-mustache"}
   .span3.fjs-ele
     .thumbnail
-      %img{src: "{{photo_url}}"}
+      %img{src: "{{photo_url}}", class: 'custom-image-rendering'}
       {{#valid_user}}
       .bookmark-controls
         %a.btn.btn-primary.edit-control{:id => "{{id}}", href: "/screamout/contents/{{id}}/details", "data-remote" => true}
@@ -38,11 +38,17 @@
         .bookmark-info
           .h5
             {{title}}
+          %br
           {{#tags_array}}
-          %span.label.label-default {{.}}
+          %span.label.label-default.font-10 {{.}}
           {{/tags_array}}
           .h5
+            %br
             {{name}}
+            %br
+            {{#user_photo_url}}
+            %img{src: "{{user_photo_url}}", class: 'custom-image-rendering img-polaroid', height: 50, width: 50}
+            {{/user_photo_url}}
 
 /
   Bootstrap core JavaScript

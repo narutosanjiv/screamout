@@ -12,7 +12,7 @@ module Screamout
     field :title, type: String
     field :url, type: String
     field :image_file_name, type:String
-    has_mongoid_attached_file :photo,:styles => {:original => ['1920x1680>', :jpg],:small  => ['180x150!',   :jpg]}  
+    has_mongoid_attached_file :photo,:styles => {:original => ['1920x1680>', :jpg],:small  => ['220x180!', :jpg]}  
 
     rateable range: (0..5)
     belongs_to :user
@@ -35,7 +35,7 @@ module Screamout
     end  
 
     def as_json(options ={})
-      options = {only: [:_id,:title, :url, :tags_array], methods: [:id, :photo_url, :name, :user_id]}
+      options = {only: [:_id,:title, :url, :tags_array], methods: [:id, :photo_url, :name, :user_id, :user_photo_url]}
       super
     end
     
@@ -63,6 +63,10 @@ module Screamout
 
     def user_id
       self.user.try(:id).try(:to_s)
+    end
+
+    def user_photo_url
+      self.user.try(:public_profile).try(:image).try(:thumb).try(:url)
     end
   end
 end
