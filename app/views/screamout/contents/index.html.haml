@@ -58,6 +58,7 @@
   parent.window.postMessage("removetheiframe", "*");
   conc = #{@contents.to_json}  
   current_user = "#{try(:current_user).try(:id).try(:to_s)}";
+  current_user_role = "#{try(:current_user).try(:role)}";
   tags_hash = #{@tags_hash.to_json}
   $(".search-query").select2({data: #{@tags_hash.to_json}, multiple: true, placeholder: 'select tags to search'})
   $(document).on('ready page:load', function(){

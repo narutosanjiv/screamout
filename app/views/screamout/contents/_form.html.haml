@@ -15,13 +15,11 @@
       = f.input :rates, :label =>false, :input_html => {class: "input-xlarge margin40"}
     .row-fluid
       = f.label :tags, class: "text-left"
-      = f.input :tags, :label =>false, :input_html => {class: 'input-xlarge tags_container margin40', multiple: true}
+      = f.input :tags, :label =>false, :input_html => {class: 'input-xlarge tags_container margin40', multiple: true, value: "#{@tags}"}
     .row-fluid{align: 'center'}
       = f.button :submit ,'Create', :class => 'btn btn-primary'
       = link_to "Cancel","javascript:void(0)",id: 'cancel', class: 'btn btn-danger'
 :javascript
-  var tag =new Array();
-  tag = #{@tags}
-  $('.tags_container').select2({tags: tag, tokenSeparators: [",", " "]})
+  $('.tags_container').select2({tags: #{@tags_hash.to_json}, tokenSeparators: [",", " "]})
   $('#cancel').on ('click',function(){$('#myModal').modal('hide');})
 

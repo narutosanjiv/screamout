@@ -19,7 +19,7 @@ module Screamout
 
     def details
       @content = Content.find(params[:id])
-      @tags = @content.tags.split(",")
+      @tags = @content.tags
       @tags_hash = Content.get_all_tags
       respond_to do |format|
         format.js {}
@@ -66,8 +66,6 @@ module Screamout
       @con = tags_to_hash(@con)
 
       if @content.update_attributes!(update_content_params_input)
-        user = try(:current_user)
-        @content.user = user
         redirect_to contents_path
       else
         render action: 'edit'
