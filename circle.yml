@@ -4,4 +4,4 @@ machine:
 database:
   override:
     # replace CircleCI's generated database.yml
-    - cp config/mongoid.yml.ci spec/dummy/config/mongoid.yml
+    - cp spec/dummy/config/mongoid.yml.ci spec/dummy/config/mongoid.yml
