@@ -11,6 +11,8 @@ module Screamout
       file = kit.to_file(Content::IMAGE_PATH + content.image_file_name)	
 
       content.update_attributes(photo: open(Content::IMAGE_PATH + content.image_file_name))
+      ContentMailer.delay.new_content_added(content_id)
+
     end
   end
 end

@@ -1,0 +1,13 @@
+%html
+  %head
+    %title
+  %body
+    = "Title: #{@content.title}"
+    %br
+    = "By: #{@content.user.public_profile.name.titleize}"
+
+    %footer
+      %p
+        Regards,
+        %p
+          Josh Team
