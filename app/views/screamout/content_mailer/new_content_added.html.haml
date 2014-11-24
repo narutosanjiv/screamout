@@ -3,7 +3,7 @@
     %title
   %body
     = "Title:"
-    = link_to "#{@title}", "http://#{ HOST_URL}/screamout/contents"
+    = link_to "#{@title}", "#{HOST_URL}/screamout/contents"
     %br
     = "By: #{@content.user.public_profile.name.titleize}"
 
