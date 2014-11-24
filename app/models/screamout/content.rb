@@ -17,7 +17,7 @@ module Screamout
     rateable range: (0..5)
     belongs_to :user
     #validates :title, presence: true
-    validates :url, presence: true, uniqueness: true, format: { with: /(^$)|(^(http|https):\/\/[a-z0-9]+(\.{1}[a-z0-9]+)*\.[a-z]{2,5}[:]?(([0-9]{1,5})?\/.*)$)/i}
+    validates :url, presence: true, uniqueness: true, format: { with: /(^$)|(^(http|https):\/\/[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}[:]?(([0-9]{1,5})?\/.*)$)/i}
     validates :image_file_name, presence: true
     validates_attachment_content_type :photo, :content_type => ["image/jpg", "image/jpeg", "image/png", "application/pdf"]
 
