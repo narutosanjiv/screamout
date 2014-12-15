@@ -1,14 +1,20 @@
 %html
   %head
     %title
+
   %body
     = "Title:"
     = link_to "#{@title}", "#{HOST_URL}/screamout/contents"
     %br
+    %br
     = "By: #{@content.user.public_profile.name.titleize}"
-
+    %br
+    %br
+    %div{ style: "position: relative; overflow: hidden; min-height: 215px;"}
+      = link_to image_tag(attachments['screamout.jpg'].url), "#{HOST_URL}/screamout/contents" 
     %footer
       %p
         Regards,
         %p
           Josh Team
+
