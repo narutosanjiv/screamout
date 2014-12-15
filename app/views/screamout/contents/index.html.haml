@@ -25,6 +25,7 @@
 
 %script#template{:type => "x-tmpl-mustache"}
   .span3.fjs-ele
+    %br
     .thumbnail
       %img{src: "{{photo_url}}", class: 'custom-image-rendering'}
       {{#valid_user}}
@@ -36,7 +37,7 @@
       {{/valid_user}}
       %a{target:"_blank" ,href:"{{url}}" }
         .bookmark-info
-          .h5
+          .h5.truncate_text
             {{title}}
           %br
           {{#tags_array}}
