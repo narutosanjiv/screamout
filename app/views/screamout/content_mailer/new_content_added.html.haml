@@ -9,8 +9,8 @@
     %br
     = "By: #{@content.user.public_profile.name.titleize}"
     %br
-    %div{ style: "position: relative; overflow: hidden; min-height: 215px;"}
-      = link_to image_tag(attachments['screamout.jpg'].url), content.url
+    %div{ style: "position: relative; overflow: hidden; min-height: 215px; text-align: center"}
+      = link_to "Direct link to content", content.url
     %br
     %div{ style: "position: relative; overflow: hidden; min-height: 215px;"}
       = link_to image_tag(attachments['screamout.jpg'].url), "#{HOST_URL}/screamout/contents" 
