@@ -16,9 +16,9 @@ Gem::Specification.new do |s|
 
   s.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.rdoc"]
 
-  s.add_dependency "rails", "4.2.0"
+  s.add_dependency "rails", "~> 5.0.0"
   s.add_dependency 'rspec-rails'
-  s.add_dependency 'mongoid'
+  s.add_dependency 'mongoid', "~> 6.0.0.beta"
   s.add_dependency 'mongoid-rspec'
   s.add_dependency 'simple_form'
   s.add_dependency 'twitter-typeahead-rails'
