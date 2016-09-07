@@ -1,14 +1,14 @@
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.1.1'
-gem 'mongoid', github:'mongoid/mongoid'
+gem 'rails', '~> 5.0.0'
+gem 'mongoid', '~> 6.0.0.beta'
 # Use SCSS for stylesheets
-gem 'sass-rails', '~> 4.0.3'
+gem 'sass-rails', '~> 5.0.5'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .js.coffee assets and views
-gem 'coffee-rails', '~> 4.0.0'
+gem 'coffee-rails', '~> 4.2'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
  gem 'therubyracer',  platforms: :ruby
 gem 'devise'
@@ -45,15 +45,15 @@ gem 'execjs'		#for executing javascript from ruby
 
 group :development, :test do  #overrite existing..generate spec directory,,include the gem in multiple rails env
 		#gem 'debugger'
-		gem 'rspec-rails' , '2.14.2'
+		gem 'rspec-rails' , '~> 3.5.1'
 		gem 'factory_girl_rails'
 		gem 'faker'
 		gem 'database_cleaner'
 		gem 'simplecov', '~> 0.7.1'
-		gem 'guard-rspec', require: false		
+		gem 'guard-rspec', require: false
 end
 gem 'mongoid-rspec'		#tests beginning with 'should'
-gem 'mongoid_taggable'	
+gem 'mongoid_taggable'
 gem 'mongoid_rateable', :git => 'git://github.com/PerfectMemory/mongoid_rateable.git'
 gem "bson"
 gem 'jquery-raty-rails', github: 'bmc/jquery-raty-rails' # Bleeding edge

@@ -1,4 +1,4 @@
-require File.expand_path('../boot', __FILE__)
+require_relative 'boot'
 
 # Pick the frameworks you want:
 require "active_model/railtie"
@@ -8,9 +8,9 @@ require "action_mailer/railtie"
 require "action_view/railtie"
 require "sprockets/railtie"
 require "bson"
-require "moped"
+#require "moped"
 
-Moped::BSON = BSON
+#Moped::BSON = BSON
 
 # require "rails/test_unit/railtie"
 
