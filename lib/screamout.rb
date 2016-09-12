@@ -2,8 +2,6 @@ require "screamout/engine"
 
 module Screamout
   require "bson"
-  require "moped"
-  Moped::BSON = BSON
   require 'mongoid-rspec'
   require 'simple_form'
   require 'twitter-typeahead-rails'

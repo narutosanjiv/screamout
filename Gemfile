@@ -15,10 +15,8 @@ gemspec
 gem 'mongoid'
 gem 'jquery-ui-rails'
 gem 'sass-rails', '~> 5.0.5'
-gem 'twitter-bootstrap-rails', '2.2.8'
 gem 'simple_form', :git => 'git://github.com/plataformatec/simple_form.git'
 gem 'turbolinks'
-gem 'twitter-typeahead-rails'
 gem 'imgkit'
 gem "jquery-rails"
 gem 'mongoid_taggable'
@@ -35,6 +33,11 @@ gem "mongoid-paperclip", :require => "mongoid_paperclip"
 gem 'haml'
 gem 'haml-rails'
 gem 'pry'
+
+source 'https://rails-assets.org' do
+  gem 'rails-assets-bootstrap', '2.3.2'
+  gem 'rails-assets-typehead.js', '0.11.1'
+end
 
 group :test do
   gem 'rspec-rails', '~> 3.5.1'

@@ -4,14 +4,12 @@
 // It's not advisable to add code directly here, but if you do, it'll appear at the bottom of the
 // the compiled file.
 //
+//= require bootstrap
+//= require typehead.js
 //= require jquery
 //= require jquery_ujs
 
-
-//= require jquery
-//= require jquery_ujs
 //= require turbolinks
-//= require twitter/bootstrap
 //= require screamout/filter
 //= require screamout/mustache
 //= require screamout/global

@@ -1,4 +1,4 @@
-module Screamout 
+module Screamout
   class Content
     include Mongoid::Document
     include Mongoid::Timestamps
@@ -12,7 +12,7 @@ module Screamout
     field :title, type: String
     field :url, type: String
     field :image_file_name, type:String
-    has_mongoid_attached_file :photo,:styles => {:original => ['1920x1680>', :jpg],:small  => ['220x180!', :jpg]}  
+    has_mongoid_attached_file :photo,:styles => {:original => ['1920x1680>', :jpg],:small  => ['220x180!', :jpg]}
 
     rateable range: (0..5)
     belongs_to :user
@@ -32,17 +32,17 @@ module Screamout
 
     def tag_map
       tags.split(",").collect{|t| {id: t, name: t}}
-    end  
+    end
 
     def as_json(options ={})
       options = {only: [:_id,:title, :url, :tags_array], methods: [:id, :photo_url, :name, :user_id, :user_photo_url]}
       super
     end
-    
+
     def id
       self._id.to_s
     end
-    
+
     def photo_url
       self.photo.url(:small)
     end
