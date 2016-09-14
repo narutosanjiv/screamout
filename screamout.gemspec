@@ -17,19 +17,9 @@ Gem::Specification.new do |s|
   s.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.rdoc"]
 
   s.add_dependency "rails", "~> 5.0.0"
-  s.add_dependency 'rspec-rails'
   s.add_dependency 'mongoid', "~> 6.0.0.beta"
-  s.add_dependency 'mongoid-rspec'
-  s.add_dependency 'simple_form'
-  s.add_dependency 'twitter-typeahead-rails'
   s.add_dependency 'jquery-ui-rails'
   s.add_dependency 'imgkit'
   s.add_dependency 'jquery-rails'
-  s.add_dependency 'mongoid_taggable'
-  s.add_dependency 'mongoid_rateable'
-  s.add_dependency 'mongoid-paperclip'
 
-  s.add_dependency 'sidekiq'
-  s.add_dependency 'haml-rails'
-  s.add_dependency 'bson'
 end

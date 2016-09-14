@@ -4,7 +4,6 @@ module Screamout
   require "bson"
   require 'mongoid-rspec'
   require 'simple_form'
-  require 'twitter-typeahead-rails'
   require 'jquery-ui-rails'
   require 'imgkit'
   require 'jquery-rails'

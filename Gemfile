@@ -12,7 +12,6 @@ gemspec
 
 # To use debugger
 # gem 'debugger'
-gem 'mongoid'
 gem 'jquery-ui-rails'
 gem 'sass-rails', '~> 5.0.5'
 gem 'simple_form', :git => 'git://github.com/plataformatec/simple_form.git'
@@ -23,7 +22,7 @@ gem 'mongoid_taggable'
 gem 'mongoid_rateable', :git => 'git://github.com/PerfectMemory/mongoid_rateable.git'
 gem "bson"
 gem 'sidekiq'
-gem 'sinatra', require: false
+gem "sinatra", ">= 2.0.0.beta2"
 gem 'slim'
 
 gem 'redis-rails'
