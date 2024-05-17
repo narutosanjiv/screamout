@@ -14,7 +14,7 @@ gem 'coffee-rails', '~> 4.2'
 gem 'devise'
 gem 'omniauth-google-oauth2'
 gem 'omniauth'
-gem 'simple_form'
+gem 'simple_form', '>= 4.0.0'
 # Use jquery as the JavaScript library
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
@@ -45,14 +45,14 @@ gem 'execjs'		#for executing javascript from ruby
 
 group :development, :test do  #overrite existing..generate spec directory,,include the gem in multiple rails env
 		#gem 'debugger'
-		gem 'rspec-rails' , '~> 3.5.1'
+		gem 'rspec-rails' , '~> 3.6.0'
 		gem 'factory_girl_rails'
 		gem 'faker'
 		gem 'database_cleaner'
 		gem 'simplecov', '~> 0.7.1'
 		gem 'guard-rspec', require: false
 end
-gem 'mongoid-rspec'		#tests beginning with 'should'
+gem 'mongoid-rspec'		, '>= 4.0.0' #tests beginning with 'should'
 gem 'mongoid_taggable'
 gem 'mongoid_rateable', :git => 'git://github.com/PerfectMemory/mongoid_rateable.git'
 gem "bson"
@@ -61,12 +61,12 @@ gem 'sidekiq'
 gem 'sinatra', require: false
 gem 'slim'
 
-gem 'redis-rails'
+gem 'redis-rails', '>= 5.0.2'
 gem 'redis-namespace'
-gem "mongoid-paperclip", :require => "mongoid_paperclip"
+gem "mongoid-paperclip", ">= 0.1.0", :require => "mongoid_paperclip"
 gem 'aws-sdk', '~> 1.3.4'
 
 gem 'haml'
-gem 'haml-rails'
+gem 'haml-rails', '>= 1.0.0'
 gem 'html2haml'
 gem 'pry'
