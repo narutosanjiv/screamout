@@ -45,7 +45,7 @@ gem 'execjs'		#for executing javascript from ruby
 
 group :development, :test do  #overrite existing..generate spec directory,,include the gem in multiple rails env
 		#gem 'debugger'
-		gem 'rspec-rails' , '~> 3.5.1'
+		gem 'rspec-rails' , '~> 8.0.0'
 		gem 'factory_girl_rails'
 		gem 'faker'
 		gem 'database_cleaner'
