@@ -1,20 +1,20 @@
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.0.0'
+gem 'rails', '~> 5.0.1'
 gem 'mongoid', '~> 6.0.0.beta'
 # Use SCSS for stylesheets
-gem 'sass-rails', '~> 5.0.5'
+gem 'sass-rails', '~> 5.0.7'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .js.coffee assets and views
-gem 'coffee-rails', '~> 4.2'
+gem 'coffee-rails', '~> 4.2', '>= 4.2.2'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
  gem 'therubyracer',  platforms: :ruby
-gem 'devise'
-gem 'omniauth-google-oauth2'
-gem 'omniauth'
-gem 'simple_form'
+gem 'devise', '>= 4.2.1'
+gem 'omniauth-google-oauth2', '>= 0.5.0'
+gem 'omniauth', '>= 1.3.2'
+gem 'simple_form', '>= 3.4.0'
 # Use jquery as the JavaScript library
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
@@ -26,9 +26,9 @@ gem 'bootstrap-sass', '~> 3.2.0'
 gem 'twitter-typeahead-rails'
 # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
 gem 'spring',        group: :development
-gem 'jquery-ui-rails'
+gem 'jquery-ui-rails', '>= 6.0.0'
 gem 'imgkit'
-gem "jquery-rails"
+gem "jquery-rails", ">= 4.2.2"
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
@@ -45,8 +45,8 @@ gem 'execjs'		#for executing javascript from ruby
 
 group :development, :test do  #overrite existing..generate spec directory,,include the gem in multiple rails env
 		#gem 'debugger'
-		gem 'rspec-rails' , '~> 3.5.1'
-		gem 'factory_girl_rails'
+		gem 'rspec-rails' , '~> 3.6.0'
+		gem 'factory_girl_rails', '>= 4.8.0'
 		gem 'faker'
 		gem 'database_cleaner'
 		gem 'simplecov', '~> 0.7.1'
@@ -58,15 +58,15 @@ gem 'mongoid_rateable', :git => 'git://github.com/PerfectMemory/mongoid_rateable
 gem "bson"
 gem 'jquery-raty-rails', github: 'bmc/jquery-raty-rails' # Bleeding edge
 gem 'sidekiq'
-gem 'sinatra', require: false
+gem 'sinatra', '>= 4.2.0', require: false
 gem 'slim'
 
-gem 'redis-rails'
+gem 'redis-rails', '>= 5.0.2'
 gem 'redis-namespace'
 gem "mongoid-paperclip", :require => "mongoid_paperclip"
 gem 'aws-sdk', '~> 1.3.4'
 
 gem 'haml'
-gem 'haml-rails'
+gem 'haml-rails', '>= 1.0.0'
 gem 'html2haml'
 gem 'pry'
