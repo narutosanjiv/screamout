@@ -64,7 +64,7 @@ gem 'slim'
 gem 'redis-rails'
 gem 'redis-namespace'
 gem "mongoid-paperclip", :require => "mongoid_paperclip"
-gem 'aws-sdk', '~> 1.3.4'
+gem 'aws-sdk', '~> 1.8.1', '>= 1.8.1.1'
 
 gem 'haml'
 gem 'haml-rails'
