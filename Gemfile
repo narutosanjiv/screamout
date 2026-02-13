@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.0'
-gem 'mongoid', '~> 6.0.0.beta'
+gem 'mongoid', '~> 7.6.1.0'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0.5'
 # Use Uglifier as compressor for JavaScript assets
@@ -12,7 +12,7 @@ gem 'coffee-rails', '~> 4.2'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
  gem 'therubyracer',  platforms: :ruby
 gem 'devise'
-gem 'omniauth-google-oauth2'
+gem 'omniauth-google-oauth2', '>= 0.5.0'
 gem 'omniauth'
 gem 'simple_form'
 # Use jquery as the JavaScript library
@@ -52,7 +52,7 @@ group :development, :test do  #overrite existing..generate spec directory,,inclu
 		gem 'simplecov', '~> 0.7.1'
 		gem 'guard-rspec', require: false
 end
-gem 'mongoid-rspec'		#tests beginning with 'should'
+gem 'mongoid-rspec'		, '>= 4.0.0' #tests beginning with 'should'
 gem 'mongoid_taggable'
 gem 'mongoid_rateable', :git => 'git://github.com/PerfectMemory/mongoid_rateable.git'
 gem "bson"
@@ -63,7 +63,7 @@ gem 'slim'
 
 gem 'redis-rails'
 gem 'redis-namespace'
-gem "mongoid-paperclip", :require => "mongoid_paperclip"
+gem "mongoid-paperclip", ">= 0.1.0", :require => "mongoid_paperclip"
 gem 'aws-sdk', '~> 1.3.4'
 
 gem 'haml'
